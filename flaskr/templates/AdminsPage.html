@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>寻师问道</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="管理员页面" />
+  <meta name="author" content="余樱童 and 朱韵" />
+  <style>
+    .delete {
+      height: 22px;
+      width: 22px;
+      border: none;
+      background: url("../static/img/bin.png") no-repeat;
+      background-size: 22px 22px;
+      outline: none;
+      cursor: pointer;
+      float: left;
+      padding: 10px;
+    }
+
+    .update {
+      height: 22px;
+      width: 22px;
+      border: none;
+      background: url("../static/img/update.png") no-repeat;
+      background-size: 22px 22px;
+      outline: none;
+      cursor: pointer;
+      float: left;
+      margin-left: 20px;
+      padding: 10px;
+    }
+
+    .upload {
+      height: 22px;
+      width: 22px;
+      border: none;
+      background: url("../static/img/upload.jpeg") no-repeat;
+      background-size: 22px 22px;
+      outline: none;
+      cursor: pointer;
+      float: left;
+      margin-left: 20px;
+      padding: 10px;
+    }
+  </style>
+
+
+  <!-- css -->
+  <link href="https://fonts.googleapis.com/css?family=Handlee|Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link href="../static/css/bootstrap.css" rel="stylesheet" />
+  <link href="../static/css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="../static/css/flexslider.css" rel="stylesheet" />
+  <link href="../static/css/prettyPhoto.css" rel="stylesheet" />
+  <link href="../static/css/camera.css" rel="stylesheet" />
+  <link href="../static/css/jquery.bxslider.css" rel="stylesheet" />
+  <link href="../static/css/style.css" rel="stylesheet" />
+
+  <!-- Theme skin -->
+  <link href="../static/color/default.css" rel="stylesheet" />
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/ico/apple-touch-icon-144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/ico/apple-touch-icon-114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/ico/apple-touch-icon-72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="../static/ico/apple-touch-icon-57-precomposed.png" />
+  <link rel="shortcut icon" href="../static/ico/favicon.png" />
+  <script src="../static/js/jquery.js"></script>
+
+
+  <style>
+    ul.pagination {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.pagination li {
+      display: inline;
+    }
+
+    ul.pagination li a {
+      color: #d35400;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      margin: 0 4px;
+    }
+
+    ul.pagination li a.active {
+      background-color: #4CAF50;
+      color: white;
+      border: 1px solid #4CAF50;
+    }
+
+    ul.pagination li a:hover:not(.active) {
+      background-color: #ddd;
+    }
+  </style>
+
+  <!-- =======================================================
+    Theme Name: Eterna
+    Theme URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
+
+
+<body>
+
+  <div id="wrapper">
+
+    <!-- start header -->
+    <header>
+      <div class="top">
+        <div class="container">
+          <div class="row">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row nomargin">
+          <div class="span4">
+            <div class="logo">
+              <a href="{{url_for('index')}}"><img src="../static/img/logo7.png" alt="" /></a>
+            </div>
+          </div>
+          <div class="span8">
+            <div class="navbar navbar-static-top">
+              <div class="navigation">
+                <nav>
+                  <ul class="nav topnav">
+                    <li>
+                      <p>
+                        你好，{{AdminsAccount}}
+                      </p>
+                      <a href="{{url_for('SignIn')}}">退出登录 </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <!-- end navigation -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+
+    <section id="inner-headline">
+      <div class="container">
+
+        <div class="span12">
+          <div class="inner-heading">
+            <ul class="breadcrumb">
+              <li><a href="{{url_for('index')}}">首页</a> <i class="icon-angle-right"></i></li>
+              <li class="active">管理员</li>
+              <span id="AA" style="color: darkgray;">{{ThisAccount}}</span>
+
+            </ul>
+
+          </div>
+        </div>
+      </div>
+  </div>
+  </section>
+  <section id="content">
+    <div class="container">
+      <div class="row">
+        <div class="span8">
+          <h4 style="font-family:黑体;color: #333;font-size: 25px;font-weight: 700;">审核</h4>
+          <div class="widget">
+            <div class="tabs">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#one" data-toggle="tab"><i></i> 评论</a></li>
+                <li><a href="#two" data-toggle="tab">教师信息</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="one">
+                  <ul class="popular">
+                    <!-- <button class="update" onclick="GetCommentData()" style="float: right;"></button> -->
+                    <li>
+                      <h5 id='teachername00'>某某老师</h5>
+                      <p id='p00'>期待评论......</p>
+                      <p id='cid0'>评论编号：0</p>
+                      <form method="POST">
+                        <div style="width: 250px;">
+                          <span id="time00" style="color: darkgray; width: 100px;float: left;">20 June,
+                            2013</span>&nbsp&nbsp&nbsp&nbsp
+                          <button class="delete"
+                            onclick="deletecomment(document.getElementById('cid0').innerText)"></button>
+                          <button class="upload"
+                            onclick="updatecomment(document.getElementById('cid0').innerText)"></button>
+                        </div>
+                      </form>
+                    </li>
+                    <li>
+                      <h5 id='teachername01'>某某老师</h5>
+                      <p id='p01'>期待评论......</p>
+                      <p id='cid1'>评论编号：0</p>
+                      <form method="POST">
+                        <div style="width: 250px;">
+                          <span id="time01" style="color: darkgray; width: 100px;float: left;">20 June,
+                            2013</span>&nbsp&nbsp&nbsp&nbsp
+                          <button class="delete"
+                            onclick="deletecomment(document.getElementById('cid1').innerText)"></button>
+                          <button class="upload"
+                            onclick="updatecomment(document.getElementById('cid1').innerText)"></button>
+                        </div>
+                      </form>
+                    </li>
+                    <li>
+                      <h5 id='teachername02'>某某老师</h5>
+                      <p id='p02'>期待评论......</p>
+                      <p id='cid2'>评论编号：0</p>
+                      <form method="POST">
+                        <div style="width: 250px;">
+                          <span id="time02" style="color: darkgray; width: 100px;float: left;">20 June,
+                            2013</span>&nbsp&nbsp&nbsp&nbsp
+                          <button class="delete"
+                            onclick="deletecomment(document.getElementById('cid2').innerText)"></button>
+                          <button class="upload"
+                            onclick="updatecomment(document.getElementById('cid2').innerText)"></button>
+                        </div>
+                      </form>
+                    </li>
+                    <li>
+                      <h5 id='teachername03'>某某老师</h5>
+                      <p id='p03'>期待评论......</p>
+                      <p id='cid3'>评论编号：0</p>
+                      <form method="POST">
+                        <div style="width: 250px;">
+                          <span id="time03" style="color: darkgray; width: 100px;float: left;">20 June,
+                            2013</span>&nbsp&nbsp&nbsp&nbsp
+                          <button class="delete"
+                            onclick="deletecomment(document.getElementById('cid3').innerText)"></button>
+                          <button class="upload"
+                            onclick="updatecomment(document.getElementById('cid3').innerText)"></button>
+                        </div>
+                      </form>
+                    </li>
+                    <li>
+                      <h5 id='teachername04'>某某老师</h5>
+                      <p id='p04'>期待评论......</p>
+                      <p id='cid4'>评论编号：0</p>
+                      <form method="POST">
+                        <div style="width: 250px;">
+                          <span id="time04" style="color: darkgray; width: 100px;float: left;">20 June,
+                            2013</span>&nbsp&nbsp&nbsp&nbsp
+                          <button class="delete"
+                            onclick="deletecomment(document.getElementById('cid4').innerText)"></button>
+                          <button class="upload"
+                            onclick="updatecomment(document.getElementById('cid4').innerText)"></button>
+                        </div>
+                      </form>
+                    </li>
+
+                    <section>
+                      <div id="pagination">
+                        <a class="inactive" onclick="prePage0()">«</a>
+                        <span class="current" id="rp0">1</span>
+                        <a class="inactive" onclick="nextPage0()">»</a>
+                        <span class="all" id="rtotal0">共0页</span>
+                        <div class="input-append">
+                          <input class="span2 input" id="rjump0" name="content" type="text" rows="1" autocomplete="off">
+                          <button class="btn btn-theme" type="submit" onclick="jumpPage0()">跳转</button>
+                          <!-- <form id="form1" method='post'><input class="span2 input" id="hidden" name="getName"></form> -->
+                        </div>
+                      </div>
+                      <script>
+                        var curPage = 0;
+                        var MaxPage = 1;
+                        var data = {
+                          'getdata': 'comment'
+                        };
+                        //function GetCommentData() {
+                        $.ajax({
+                          url: "{{ url_for('AdminsPage', AdminsAccount = session['AdminAccount']) }}",
+                          type: "POST",
+                          dataType: "json",
+                          data: data,
+                          // 初始状态
+                          success: function (data) {
+                            // console.log(data);
+                            contents = data.json_list["content0"];
+                            uploadtimes0 = data.json_list["uploadtime0"];
+                            pageTname = data.json_list["Tname0"];
+                            commentIds = data.json_list["CID"];
+                            MaxPage = Math.ceil(data.json_list["content0"].length / 5);
+                            total = document.getElementById("rtotal0");
+                            total.innerText = `共${MaxPage}页`;
+                            if (data.json_list["content0"].length !== 0) {
+                              var i;
+                              for (i = 0; i < contents.length && i < 5; i++) {
+                                content = document.getElementById(`p0${i}`);
+                                content.innerText = contents[curPage * 5 + i];
+                                uptime = document.getElementById(`time0${i}`);
+                                uptime.innerText = uploadtimes0[curPage * 5 + i];
+                                teachername = document.getElementById(`teachername0${i}`);
+                                teachername.innerText = pageTname[curPage * 5 + i];
+                                commentId = document.getElementById(`cid${i}`);
+                                commentId.innerText = "评论编号：" + commentIds[curPage * 5 + i];
+                              }
+                              for (i; i < 5; i++) {
+                                content = document.getElementById(`p0${i}`);
+                                content.innerText = "期待评论......";
+                                uptime = document.getElementById(`time0${i}`);
+                                uptime.innerText = "2021-06-02 22:45:07";
+                                teachername = document.getElementById(`teachername0${i}`);
+                                teachername.innerText = "某某老师";
+                                commentId = document.getElementById(`cid${i}`);
+                                commentId.innerText = "评论编号：0";
+                              }
+                            }
+                          }
+                        });
+                        //}
+                        // 下一页
+                        function nextPage0() {
+                          if (curPage === MaxPage - 1) return;
+                          curPage = curPage + 1;
+                          document.getElementById("rp0").innerText = `${curPage + 1}`;
+                          var i = 0;
+                          for (i = 0; curPage * 5 + i < contents.length && i < 5; i++) {
+                            content = document.getElementById(`p0${i}`);
+                            content.innerText = contents[curPage * 5 + i];
+                            uptime = document.getElementById(`time0${i}`);
+                            uptime.innerText = uploadtimes0[curPage * 5 + i];
+                            teachername = document.getElementById(`teachername0${i}`);
+                            teachername.innerText = pageTname[curPage * 5 + i];
+                            commentId = document.getElementById(`cid${i}`);
+                            commentId.innerText = "评论编号：" + commentIds[curPage * 5 + i];
+                          }
+                          for (i; i < 5; i++) {
+                            content = document.getElementById(`p0${i}`);
+                            content.innerText = "期待评论......";
+                            uptime = document.getElementById(`time0${i}`);
+                            uptime.innerText = "2021-06-02 22:45:07";
+                            teachername = document.getElementById(`teachername0${i}`);
+                            teachername.innerText = "某某老师";
+                            commentId = document.getElementById(`cid${i}`);
+                            commentId.innerText = "评论编号：0";
+                          }
+                        }
+                        // 上一页
+                        function prePage0() {
+                          if (curPage === 0) return;
+                          curPage = curPage - 1;
+                          document.getElementById("rp0").innerText = `${curPage + 1}`;
+                          var i = 0;
+                          for (i = 0; curPage * 5 + i < contents.length && i < 5; i++) {
+                            content = document.getElementById(`p0${i}`);
+                            content.innerText = contents[curPage * 5 + i];
+                            uptime = document.getElementById(`time0${i}`);
+                            uptime.innerText = uploadtimes0[curPage * 5 + i];
+                            teachername = document.getElementById(`teachername0${i}`);
+                            teachername.innerText = pageTname[curPage * 5 + i];
+                            commentId = document.getElementById(`cid${i}`);
+                            commentId.innerText = "评论编号：" + commentIds[curPage * 5 + i];
+                          }
+                          for (i; i < 5; i++) {
+                            content = document.getElementById(`p0${i}`);
+                            content.innerText = "期待评论......";
+                            uptime = document.getElementById(`time0${i}`);
+                            uptime.innerText = "2021-06-02 22:45:07";
+                            teachername = document.getElementById(`teachername0${i}`);
+                            teachername.innerText = "某某老师";
+                            commentId = document.getElementById(`cid${i}`);
+                            commentId.innerText = "评论编号：0";
+                          }
+                        }
+                        // 页面跳转
+                        function jumpPage0() {
+                          jump = document.getElementById("rjump0").value;
+                          if (jump <= 0 || jump > MaxPage) alert("页面超出范围，请重新输入");
+                          curPage = jump - 1;
+                          document.getElementById("rp0").innerText = `${curPage + 1}`;
+                          var i = 0;
+                          for (i = 0; curPage * 5 + i < contents.length && i < 5; i++) {
+                            content = document.getElementById(`p0${i}`);
+                            content.innerText = contents[curPage * 5 + i];
+                            uptime = document.getElementById(`time0${i}`);
+                            uptime.innerText = uploadtimes0[curPage * 5 + i];
+                            teachername = document.getElementById(`teachername0${i}`);
+                            teachername.innerText = pageTname[curPage * 5 + i];
+                            commentId = document.getElementById(`cid${i}`);
+                            commentId.innerText = "评论编号：" + commentIds[curPage * 5 + i];
+                          }
+                          for (i; i < 5; i++) {
+                            content = document.getElementById(`p0${i}`);
+                            content.innerText = "期待评论......";
+                            uptime = document.getElementById(`time0${i}`);
+                            uptime.innerText = "2021-06-02 22:45:07";
+                            teachername = document.getElementById(`teachername0${i}`);
+                            teachername.innerText = "某某老师";
+                            commentId = document.getElementById(`cid${i}`);
+                            commentId.innerText = "评论编号：0";
+                          }
+                        }
+                        function deletecomment(id) {
+                          var data = {
+                            'delcomment': id,
+                            'old_page': curPage
+                          };
+                          $.ajax({
+                            url: "{{ url_for('AdminsPage', AdminsAccount = session['AdminAccount']) }}",
+                            type: "POST",
+                            dataType: "json",
+                            data: data,
+                            success: function (data) {
+                            },
+                          });
+                        }
+                        function updatecomment(id) {
+                          var up = {
+                            'upcomment': id,
+                            'old_page': curPage
+                          };
+                          $.ajax({
+                            url: "{{ url_for('AdminsPage', AdminsAccount = session['AdminAccount']) }}",
+                            type: "POST",
+                            dataType: "json",
+                            data: up,
+                            success: function (up) {
+                            },
+                          });
+                        }
+                      </script>
+                    </section>
+                  </ul>
+                </div>
+                <div class="tab-pane" id="two">
+                  <ul class="popular">
+                    <!-- <button class="update" onclick="GetTeacherData()" style="float: right;"></button> -->
+                    <li>
+                      <h5 id='teachername10'>某某老师</h5>
+                      <p id='title0'>职称......</p>
+                      <p id='college0'>学院......</p>
+                      <p id='ReIntre0'>科研方向......</p>
+                      <p id='Intro0'>介绍......</p>
+                      <p id='tid0'>老师编号：0</p>
+                      <form method="POST">
+                        <div style="width: 250px;">
+                          <span id="time10" style="color: darkgray; width: 100px;float: left;">20 June,
+                            2013</span>&nbsp&nbsp&nbsp&nbsp
+                          <button class="delete"
+                            onclick="deleteteacher(document.getElementById('tid0').innerText)"></button>
+                          <button class="upload"
+                            onclick="updateteacher(document.getElementById('tid0').innerText)"></button>
+                        </div>
+                      </form>
+                    </li>
+                    <li>
+                      <h5 id='teachername11'>某某老师</h5>
+                      <p id='title1'>职称......</p>
+                      <p id='college1'>学院......</p>
+                      <p id='ReIntre1'>科研方向......</p>
+                      <p id='Intro1'>介绍......</p>
+                      <p id='tid1'>老师编号：0</p>
+                      <form method="POST">
+                        <div style="width: 250px;">
+                          <span id="time11" style="color: darkgray; width: 100px;float: left;">20 June,
+                            2013</span>&nbsp&nbsp&nbsp&nbsp
+                          <button class="delete"
+                            onclick="deleteteacher(document.getElementById('tid1').innerText)"></button>
+                          <button class="upload"
+                            onclick="updateteacher(document.getElementById('tid1').innerText)"></button>
+                        </div>
+                      </form>
+                    </li>
+                    <li>
+                      <h5 id='teachername12'>某某老师</h5>
+                      <p id='title2'>职称......</p>
+                      <p id='college2'>学院......</p>
+                      <p id='ReIntre2'>科研方向......</p>
+                      <p id='Intro2'>介绍......</p>
+                      <p id='tid2'>老师编号：0</p>
+                      <form method="POST">
+                        <div style="width: 250px;">
+                          <span id="time12" style="color: darkgray; width: 100px;float: left;">20 June,
+                            2013</span>&nbsp&nbsp&nbsp&nbsp
+                          <button class="delete"
+                            onclick="deleteteacher(document.getElementById('tid2').innerText)"></button>
+                          <button class="upload"
+                            onclick="updateteacher(document.getElementById('tid2').innerText)"></button>
+                        </div>
+                      </form>
+                    </li>
+                    <li>
+                      <h5 id='teachername13'>某某老师</h5>
+                      <p id='title3'>职称......</p>
+                      <p id='college3'>学院......</p>
+                      <p id='ReIntre3'>科研方向......</p>
+                      <p id='Intro3'>介绍......</p>
+                      <p id='tid3'>老师编号：0</p>
+                      <form method="POST">
+                        <div style="width: 250px;">
+                          <span id="time13" style="color: darkgray; width: 100px;float: left;">20 June,
+                            2013</span>&nbsp&nbsp&nbsp&nbsp
+                          <button class="delete"
+                            onclick="deleteteacher(document.getElementById('tid3').innerText)"></button>
+                          <button class="upload"
+                            onclick="updateteacher(document.getElementById('tid3').innerText)"></button>
+                        </div>
+                      </form>
+                    </li>
+                    <li>
+                      <h5 id='teachername14'>某某老师</h5>
+                      <p id='title4'>职称......</p>
+                      <p id='college4'>学院......</p>
+                      <p id='ReIntre4'>科研方向......</p>
+                      <p id='Intro4'>介绍......</p>
+                      <p id='tid4'>老师编号：0</p>
+                      <form method="POST">
+                        <div style="width: 250px;">
+                          <span id="time14" style="color: darkgray; width: 100px;float: left;">20 June,
+                            2013</span>&nbsp&nbsp&nbsp&nbsp
+                          <button class="delete"
+                            onclick="deleteteacher(document.getElementById('tid4').innerText)"></button>
+                          <button class="upload"
+                            onclick="updateteacher(document.getElementById('tid4').innerText)"></button>
+                        </div>
+                      </form>
+                    </li>
+                    <section>
+                      <div id="pagination">
+                        <a class="inactive" onclick="prePage1()">«</a>
+                        <span class="current" id="rp1">1</span>
+                        <a class="inactive" onclick="nextPage1()">»</a>
+                        <span class="all" id="rtotal1">共0页</span>
+                        <div class="input-append">
+                          <input class="span2 input" id="rjump1" name="content" type="text" rows="1" autocomplete="off">
+                          <button class="btn btn-theme" type="submit" onclick="jumpPage1()">跳转</button>
+                          <!-- <form id="form1" method='post'><input class="span2 input" id="hidden" name="getName"></form> -->
+                        </div>
+                      </div>
+                      <script>
+                        var curPage1 = 0;
+                        var MaxPage1 = 1;
+                        var data = {
+                          'getdata': 'teacher'
+                        };
+                        // teachername = document.getElementById(`teachername1` + '4');
+                        // teachername.innerText = "hh老师";
+                        // function GetTeacherData() {
+                        $.ajax({
+                          url: "{{ url_for('AdminsPage', AdminsAccount = session['AdminAccount']) }}",
+                          type: "POST",
+                          dataType: "json",
+                          data: data,
+                          // 初始状态
+                          success: function (data) {
+                            // console.log(data);
+                            // alert("开始显示信息")
+                            college = data.json_list["College1"];
+                            Intro = data.json_list["Intro1"];
+                            uploadtimes1 = data.json_list["UpdateTime1"];
+                            TeacherName = data.json_list["Tname1"];
+                            reinterest = data.json_list["ResearchInterests1"];
+                            Title = data.json_list["Title1"];
+                            teacherId1 = data.json_list["TID1"];
+                            MaxPage1 = Math.ceil(TeacherName.length / 5);
+                            total = document.getElementById("rtotal1");
+                            total.innerText = `共${MaxPage1}页`;
+                            if (TeacherName.length !== 0) {
+                              var i;
+                              for (i = 0; i < TeacherName.length && i < 5; i++) {
+                                uptime = document.getElementById(`time1${i}`);
+                                uptime.innerText = uploadtimes1[curPage1 * 5 + i];
+                                teachername = document.getElementById(`teachername1${i}`);
+                                teachername.innerText = TeacherName[curPage1 * 5 + i];
+                                teacherId = document.getElementById(`tid${i}`);
+                                teacherId.innerText = "老师编号：" + teacherId1[curPage1 * 5 + i];
+                                titles = document.getElementById(`title${i}`);
+                                titles.innerText = "职称：" + Title[curPage1 * 5 + i];
+                                colleges = document.getElementById(`college${i}`);
+                                colleges.innerText = "学院：" + college[curPage1 * 5 + i];
+                                reinterests = document.getElementById(`ReIntre${i}`);
+                                reinterests.innerText = "研究方向：" + reinterest[curPage1 * 5 + i];
+                                Introduction = document.getElementById(`Intro${i}`);
+                                Introduction.innerText = "介绍：" + Intro[curPage1 * 5 + i];
+                              }
+                              for (i; i < 5; i++) {
+                                uptime = document.getElementById(`time1${i}`);
+                                uptime.innerText = "2021-06-02 22:45:07";
+                                teachername = document.getElementById(`teachername1${i}`);
+                                teachername.innerText = "某某老师";
+                                teacherId = document.getElementById(`tid${i}`);
+                                teacherId.innerText = "老师编号：0";
+                                titles = document.getElementById(`title${i}`);
+                                titles.innerText = "职称......";
+                                reinterests = document.getElementById(`college${i}`);
+                                reinterests.innerText = "研究方向......";
+                                Introduction = document.getElementById(`Intro${i}`);
+                                Introduction.innerText = "介绍......";
+                              }
+                            }
+                            // alert("信息显示结束")
+                          }
+                        });
+                        // }
+                        // 下一页
+                        function nextPage1() {
+                          if (curPage1 === MaxPage1 - 1) return;
+                          curPage1 = curPage1 + 1;
+                          document.getElementById("rp1").innerText = `${curPage1 + 1}`;
+                          var i = 0;
+                          for (i = 0; curPage1 * 5 + i < TeacherName.length && i < 5; i++) {
+                            uptime = document.getElementById(`time1${i}`);
+                            uptime.innerText = uploadtimes1[curPage1 * 5 + i];
+                            teachername = document.getElementById(`teachername1${i}`);
+                            teachername.innerText = TeacherName[curPage1 * 5 + i];
+                            teacherId = document.getElementById(`tid${i}`);
+                            teacherId.innerText = "老师编号：" + teacherId1[curPage1 * 5 + i];
+                            titles = document.getElementById(`title${i}`);
+                            titles.innerText = "职称：" + Title[curPage1 * 5 + i];
+                            reinterests = document.getElementById(`college${i}`);
+                            reinterests.innerText = "研究方向：" + reinterest[curPage1 * 5 + i];
+                            Introduction = document.getElementById(`Intro${i}`);
+                            Introduction.innerText = "介绍：" + Intro[curPage1 * 5 + i];
+                          }
+                          for (i; i < 5; i++) {
+                            uptime = document.getElementById(`time1${i}`);
+                            uptime.innerText = "2021-06-02 22:45:07";
+                            teachername = document.getElementById(`teachername1${i}`);
+                            teachername.innerText = "某某老师";
+                            teacherId = document.getElementById(`tid${i}`);
+                            teacherId.innerText = "老师编号：0";
+                            titles = document.getElementById(`title${i}`);
+                            titles.innerText = "职称......";
+                            reinterests = document.getElementById(`'college${i}`);
+                            reinterests.innerText = "研究方向......";
+                            Introduction = document.getElementById(`Intro${i}`);
+                            Introduction.innerText = "介绍......";
+                          }
+                        }
+                        // 上一页
+                        function prePage1() {
+                          if (curPage1 === 0) return;
+                          curPage1 = curPage1 - 1;
+                          document.getElementById("rp1").innerText = `${curPage1 + 1}`;
+                          var i = 0;
+                          for (i = 0; curPage1 * 5 + i < TeacherName.length && i < 5; i++) {
+                            uptime = document.getElementById(`time1${i}`);
+                            uptime.innerText = uploadtimes1[curPage1 * 5 + i];
+                            teachername = document.getElementById(`teachername1${i}`);
+                            teachername.innerText = TeacherName[curPage1 * 5 + i];
+                            teacherId = document.getElementById(`tid${i}`);
+                            teacherId.innerText = "老师编号：" + teacherId1[curPage1 * 5 + i];
+                            titles = document.getElementById(`title${i}`);
+                            titles.innerText = "职称：" + Title[curPage1 * 5 + i];
+                            reinterests = document.getElementById(`college${i}`);
+                            reinterests.innerText = "研究方向：" + reinterest[curPage1 * 5 + i];
+                            Introduction = document.getElementById(`Intro${i}`);
+                            Introduction.innerText = "介绍：" + Intro[curPage1 * 5 + i];
+                          }
+                          for (i; i < 5; i++) {
+                            uptime = document.getElementById(`time1${i}`);
+                            uptime.innerText = "2021-06-02 22:45:07";
+                            teachername = document.getElementById(`teachername1${i}`);
+                            teachername.innerText = "某某老师";
+                            teacherId = document.getElementById(`tid${i}`);
+                            teacherId.innerText = "老师编号：0";
+                            titles = document.getElementById(`title${i}`);
+                            titles.innerText = "职称......";
+                            reinterests = document.getElementById(`college${i}`);
+                            reinterests.innerText = "研究方向......";
+                            Introduction = document.getElementById(`Intro${i}`);
+                            Introduction.innerText = "介绍......";
+                          }
+                        }
+                        // 页面跳转
+                        function jumpPage1() {
+                          jump = document.getElementById("rjump1").value;
+                          if (jump <= 0 || jump > MaxPage1) alert("页面超出范围，请重新输入");
+                          curPage1 = jump - 1;
+                          document.getElementById("rp1").innerText = `${curPage1 + 1}`;
+                          var i = 0;
+                          for (i = 0; curPage1 * 5 + i < TeacherName.length && i < 5; i++) {
+                            uptime = document.getElementById(`time1${i}`);
+                            uptime.innerText = uploadtimes1[curPage1 * 5 + i];
+                            teachername = document.getElementById(`teachername1${i}`);
+                            teachername.innerText = TeacherName[curPage1 * 5 + i];
+                            teacherId = document.getElementById(`tid${i}`);
+                            teacherId.innerText = "老师编号：" + teacherId1[curPage1 * 5 + i];
+                            titles = document.getElementById(`title${i}`);
+                            titles.innerText = "职称：" + Title[curPage1 * 5 + i];
+                            reinterests = document.getElementById(`college${i}`);
+                            reinterests.innerText = "研究方向：" + reinterest[curPage1 * 5 + i];
+                            Introduction = document.getElementById(`Intro${i}`);
+                            Introduction.innerText = "介绍：" + Intro[curPage1 * 5 + i];
+                          }
+                          for (i; i < 5; i++) {
+                            uptime = document.getElementById(`time1${i}`);
+                            uptime.innerText = "2021-06-02 22:45:07";
+                            teachername = document.getElementById(`teachername1${i}`);
+                            teachername.innerText = "某某老师";
+                            teacherId = document.getElementById(`tid${i}`);
+                            teacherId.innerText = "老师编号：0";
+                            titles = document.getElementById(`title${i}`);
+                            titles.innerText = "职称......";
+                            reinterests = document.getElementById(`college${i}`);
+                            reinterests.innerText = "研究方向......";
+                            Introduction = document.getElementById(`Intro${i}`);
+                            Introduction.innerText = "介绍......";
+                          }
+                        }
+                        function deleteteacher(id) {
+                          var data = {
+                            'delteacher': id,
+                            'old_page': curPage
+                          };
+                          $.ajax({
+                            url: "{{ url_for('AdminsPage', AdminsAccount = session['AdminAccount']) }}",
+                            type: "POST",
+                            dataType: "json",
+                            data: data,
+                            success: function (data) {
+                            },
+                          });
+                        }
+                        function updateteacher(id) {
+                          var up = {
+                            'upteacher': id,
+                            'old_page': curPage
+                          };
+                          $.ajax({
+                            url: "{{ url_for('AdminsPage', AdminsAccount = session['AdminAccount']) }}",
+                            type: "POST",
+                            dataType: "json",
+                            data: up,
+                            success: function (up) {
+                            },
+                          });
+                        }
+                      </script>
+                    </section>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="span4">
+
+          <aside class="right-sidebar">
+            <h4 style="font-family:黑体;color: #333;font-size: 25px;font-weight: 700;">发布公告</h4>
+            <br><br>
+            <div class="widget">
+              <form method="POST">
+                <div class="input-append">
+                  <input class="span3" id="announceTitle" name="announceTitle" type="text" placeholder="标题"><br><br>
+                  <textarea class="span3" rows="10" id="announcement" type="text" placeholder="内容"
+                    name="announcement"></textarea><br><br>
+                  <button class="btn btn-theme" type="submit" style="float: right;" onclick="announce()">发布</button>
+                </div>
+              </form>
+            </div>
+            <script>
+              function announce() {
+                var aTitle = $('#announceTitle').val();
+                var aContent = $('#announcement').val();
+                if (aTitle.length <= 0 || aContent.length <= 0) {
+                  alert("公告标题或内容不能为空！")
+                }
+                else {
+                  alert("发布成功！")
+                }
+                $.ajax({
+                  url: "{{ url_for('AdminsPage', AdminsAccount = session['AdminAccount']) }}",
+                  type: "POST",
+                  dataType: "json",
+                  success: function () {
+                  },
+                });
+              }
+            </script>
+          </aside>
+        </div>
+
+
+      </div>
+  </section>
+
+  <footer>
+      <div class="container">
+        <h5 class="widgetheading">联系我们</h5>
+        <div class="row">
+          <div class="span4">
+            <address>
+              <strong>南开大学</strong><br>
+              天津市津南区海河教育园区同砚路38号
+            </address>
+          </div>
+          <div class="span4">
+            <div class="widget">
+              <p>
+                <br>
+                <i class="icon-github"></i> https://github.com/king-wk <br>
+              </p>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="widget">
+              <p>
+                <br>
+                <i class="icon-envelope-alt"></i> lookingforteachers@126.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sub-footer">
+        <div class="container">
+          <div class="row">
+            <div class="span6">
+              <div class="copyright">
+                <p><span>copyright&copy;. All right reserved</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bglight icon-2x active"></i></a>
+
+  <!-- javascript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="../static/js/jquery.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/bootstrap.js"></script>
+
+  <script src="../static/js/modernizr.custom.js"></script>
+  <script src="../static/js/toucheffects.js"></script>
+  <script src="../static/js/google-code-prettify/prettify.js"></script>
+  <script src="../static/js/jquery.bxslider.min.js"></script>
+
+  <script src="../static/js/jquery.prettyPhoto.js"></script>
+  <script src="../static/js/portfolio/jquery.quicksand.js"></script>
+  <script src="../static/js/portfolio/setting.js"></script>
+
+  <script src="../static/js/jquery.flexslider.js"></script>
+  <script src="../static/js/animate.js"></script>
+  <script src="../static/js/inview.js"></script>
+
+  <!-- Template Custom JavaScript File -->
+  <script src="../static/js/custom.js"></script>
+
+
+
+
+</body>
+
+</html>

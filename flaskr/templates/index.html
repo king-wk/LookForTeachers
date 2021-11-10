@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>寻师问道</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="主页" />
+  <meta name="author" content="肖中遥 and 文静静 and 朱韵" />
+
+  <!-- css -->
+  <link href="https://fonts.googleapis.com/css?family=Handlee|Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link href="../static/css/bootstrap.css" rel="stylesheet" />
+  <link href="../static/css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="../static/css/flexslider.css" rel="stylesheet" />
+  <link href="../static/css/prettyPhoto.css" rel="stylesheet" />
+  <link href="../static/css/camera.css" rel="stylesheet" />
+  <link href="../static/css/jquery.bxslider.css" rel="stylesheet" />
+  <link href="../static/css/style.css" rel="stylesheet" />
+  <link href="../static/css/jquery-ui.css" rel="stylesheet" />
+
+  <!-- Theme skin -->
+  <link href="../static/color/default.css" rel="stylesheet" />
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/ico/apple-touch-icon-144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/ico/apple-touch-icon-114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/ico/apple-touch-icon-72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="../static/ico/apple-touch-icon-57-precomposed.png" />
+  <link rel="shortcut icon" href="../static/ico/favicon.png" />
+
+  <!-- =======================================================
+    Theme Name: Eterna
+    Theme URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
+
+<body>
+
+  <div id="wrapper">
+
+
+    <!-- start header -->
+    <header>
+      <div class="top">
+        <div class="container">
+          <div class="row">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row nomargin">
+          <div class="span4">
+            <div class="logo">
+              <a href="index"><img src="../static/img/logo7.png" alt="" /></a>
+            </div>
+          </div>
+          <div class="span8">
+            <div class="navbar navbar-static-top">
+              <div class="navigation">
+                <nav>
+                  <ul class="nav topnav">
+                    <li>
+                      <a href="index">首页 </a>
+                    </li>
+                    <li>
+                      <a href="OverviewTeachers">教师总览 </a>
+                    </li>
+                    <li>
+                      <a href="Announcements">公告 </a>
+                    </li>
+                    <li>
+                      <a href="SignIn">登录 </i></a>
+                    </li>
+                    <li>
+                      <a href="AddTeacher">关于我们 </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <!-- end navigation -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+
+    <!-- section featured -->
+    <section id="featured">
+
+      <!-- opt in area for landing page -->
+      <div class="landing">
+        <div class="container">
+          <div class="row">
+            <div class="span6">
+              <div class="video-container">
+                <img
+                  src="https://www.nankai.edu.cn/_upload/article/images/07/ef/f774503a4c6aa70778bddf4afdf3/e39739ac-84e1-4d1d-8f88-1ec5d780d920.jpg"></img>
+                <!-- <iframe src="https://www.nankai.edu.cn/_upload/article/videos/4e/9d/9c389de142629bbf082ce252081b/3efdac19-4fd8-4772-a69a-b2aa2e1d1530.mp4">			</iframe>-->
+              </div>
+            </div>
+            <div class="span6">
+              <h2><strong>寻师问道<span class="colored"> 良禽择木</span></strong></h2>
+
+              <strong>
+                <p class="animated fadeInUp">众里寻他千百度 </p>
+                <p class="animated fadeInUp">蓦然回首</p>
+                <p class="animated fadeInUp">那人却在灯火阑珊处 </p>
+              </strong>
+              <p class="animated fadeInUp">输入老师的姓名，探索你中意的老师吧！ </p>
+              <form method="post" action="index">
+                <div class="input-append">
+                  <input class="span3 input-large" id="autocomplete" name="content" type="text" autocomplete="off"
+                    onkeyup="searchWord(this.value)">
+                  <button class="btn btn-theme btn-large" style="top: auto;">搜索</button>
+                  <script src="../static/js/external/jquery/jquery.js"></script>
+                  <script src="../static/js/jquery-ui.js"></script>
+                  <h1>{{result}}</h1>
+                  <script>
+                    let sOldValue;
+                    sOldValue = "";
+                    function searchWord(vNewValue) {
+                      if (sOldValue !== vNewValue) {
+                        sOldValue = vNewValue;
+                      }
+                    }
+                    $("#autocomplete").autocomplete({
+                      source: function (request, response) {
+                        $.ajax({
+                          url: "/index",
+                          type: "POST",
+                          data: { 'value': sOldValue },
+                          dataType: "json",
+                          success: function (data) {
+                            if (data.json_list.length !== 0) {
+                              response($.map(data.json_list, function (item) {
+                                console.log(item);
+                                return { //lable为下拉列表显示数据源。value为选中放入到文本框的值，这种方式可以自定义显示
+                                  lable: item,
+                                  value: item
+                                };
+                              }));
+                            }
+                          }
+                        });
+                      },
+                      mustMatch: true,
+                      delay: 0
+                    });
+                  </script>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- /section featured -->
+
+    <section id="content">
+      <div class="container">
+
+        <div class="row">
+          <div class="span12 aligncenter">
+            <h3 class="title">我们 <strong>有</strong> 什么</h3>
+            <div class="blankline30"></div>
+
+            <ul class="bxslider">
+              <li>
+                <blockquote>
+                  想了解老师的科研方向？想探索老师实验室？
+                </blockquote>
+                <div class="testimonial-autor">
+                  <img src="../static/img/dummies/testimonial/1.png" alt="" />
+                  <h4>托尔斯泰·韵</h4>
+                </div>
+              </li>
+              <li>
+                <blockquote>
+                  为选课纠结不已？选哪个老师更符合你的学习节奏？
+                </blockquote>
+                <div class="testimonial-autor">
+                  <img src="../static/img/dummies/testimonial/2.png" alt="" />
+                  <h4>玛利亚·静</h4>
+                </div>
+              </li>
+              <li>
+                <blockquote>
+                  想加入老师的科研团队？缺乏联系方式？
+                </blockquote>
+                <div class="testimonial-autor">
+                  <img src="../static/img/dummies/testimonial/3.png" alt="" />
+                  <h4>柴可夫斯基·余</h4>
+                </div>
+              </li>
+              <li>
+                <blockquote>
+                  想评价老师的授课风格？无处可写？
+                </blockquote>
+                <div class="testimonial-autor">
+                  <img src="../static/img/dummies/testimonial/4.png" alt="" />
+                  <h4>耶夫斯基·肖</h4>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <footer>
+      <div class="container">
+        <h5 class="widgetheading">联系我们</h5>
+        <div class="row">
+          <div class="span4">
+            <address>
+              <strong>南开大学</strong><br>
+              天津市津南区海河教育园区同砚路38号
+            </address>
+          </div>
+          <div class="span4">
+            <div class="widget">
+              <p>
+                <br>
+                <i class="icon-github"></i> https://github.com/king-wk <br>
+              </p>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="widget">
+              <p>
+                <br>
+                <i class="icon-envelope-alt"></i> lookingforteachers@126.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sub-footer">
+        <div class="container">
+          <div class="row">
+            <div class="span6">
+              <div class="copyright">
+                <p><span>copyright&copy;. All right reserved</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bglight icon-2x active"></i></a>
+
+  <!-- javascript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="../static/js/jquery.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/bootstrap.js"></script>
+
+  <script src="../static/js/modernizr.custom.js"></script>
+  <script src="../static/js/toucheffects.js"></script>
+  <script src="../static/js/google-code-prettify/prettify.js"></script>
+  <script src="../static/js/jquery.bxslider.min.js"></script>
+  <script src="../static/js/camera/camera.js"></script>
+  <script src="../static/js/camera/setting.js"></script>
+
+  <script src="../static/js/jquery.prettyPhoto.js"></script>
+  <script src="../static/js/portfolio/jquery.quicksand.js"></script>
+  <script src="../static/js/portfolio/setting.js"></script>
+
+  <script src="../static/js/jquery.flexslider.js"></script>
+  <script src="../static/js/animate.js"></script>
+  <script src="../static/js/inview.js"></script>
+
+  <!-- Template Custom JavaScript File -->
+  <script src="../static/js/custom.js"></script>
+
+
+
+</body>
+
+</html>

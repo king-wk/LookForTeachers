@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>寻师问道</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="公告展示页面" />
+  <meta name="author" content="文静静" />
+
+  <!-- css -->
+  <link href="https://fonts.googleapis.com/css?family=Handlee|Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link href="../static/css/bootstrap.css" rel="stylesheet" />
+  <link href="../static/css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="../static/css/flexslider.css" rel="stylesheet" />
+  <link href="../static/css/prettyPhoto.css" rel="stylesheet" />
+  <link href="../static/css/camera.css" rel="stylesheet" />
+  <link href="../static/css/jquery.bxslider.css" rel="stylesheet" />
+  <link href="../static/css/style.css" rel="stylesheet" />
+
+  <!-- Theme skin -->
+  <link href="../static/color/default.css" rel="stylesheet" />
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/ico/apple-touch-icon-144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/ico/apple-touch-icon-114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/ico/apple-touch-icon-72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="../static/ico/apple-touch-icon-57-precomposed.png" />
+  <link rel="shortcut icon" href="../static/ico/favicon.png" />
+  <script src="../static/js/jquery.js"></script>
+
+  <style>
+    ul.pagination {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.pagination li {
+      display: inline;
+    }
+
+    ul.pagination li a {
+      color: #d35400;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      margin: 0 4px;
+    }
+
+    ul.pagination li a.active {
+      background-color: #4CAF50;
+      color: white;
+      border: 1px solid #4CAF50;
+    }
+
+    ul.pagination li a:hover:not(.active) {
+      background-color: #ddd;
+    }
+  </style>
+
+
+
+  <!-- =======================================================
+    Theme Name: Eterna
+    Theme URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
+
+<body>
+
+  <div id="wrapper">
+
+    <!-- start header -->
+    <header>
+      <div class="top">
+        <div class="container">
+          <div class="row">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row nomargin">
+          <div class="span4">
+            <div class="logo">
+              <a href="{{url_for('index')}}"><img src="../static/img/logo7.png" alt="" /></a>
+            </div>
+          </div>
+          <div class="span8">
+            <div class="navbar navbar-static-top">
+              <div class="navigation">
+                <nav>
+                  <ul class="nav topnav">
+                    <li>
+                      <a href="{{url_for('index')}}">首页 </a>
+                    </li>
+                    <li>
+                      <a href="{{url_for('OverviewTeachers')}}">教师总览 </a>
+                    </li>
+                    <li>
+                      <a href="{{url_for('Announcements')}}">公告 </a>
+                    </li>
+                    <li>
+                      <a href="{{url_for('SignIn')}}">登录 </i></a>
+                    </li>
+                    <li>
+                      <a href="{{url_for('AboutUs')}}">关于我们 </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <!-- end navigation -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <div class="inner-heading">
+              <ul class="breadcrumb">
+                <li><a href="index">首页</a> <i class="icon-angle-right"></i></li>
+                <li class="active">公告</li>
+              </ul>
+              <h2>网站公告</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="content">
+      <div class="container">
+        <div class="row">
+
+          <div class="span12">
+            <article>
+              <div class="meta-post">
+                <ul>
+                  <li><i class="icon-file"></i></li>
+                  <li>By <a id="l0" href="#" class="author">ring0</a></li>
+                  <li>On <a id='t0' href="#" class="date">2021-06-07 15:03:34</a></li>
+                </ul>
+              </div>
+              <h5>
+                <strong>
+                  <div id="title0" class="post-entry">
+                    更新
+                  </div>
+                </strong>
+              </h5>
+              <p>
+              <div id="c0" class="post-entry">
+                网站已更新后台功能，管理员可以正常登录审核信息和评论。
+
+              </div>
+              </p>
+
+            </article>
+
+            <article>
+              <div class="meta-post">
+                <ul>
+                  <li><i class="icon-file"></i></li>
+                  <li>By <a id="l1" href="#" class="author">ring0</a></li>
+                  <li>On <a id='t1' href="#" class="date">2021-06-01 18:08:34</a></li>
+                </ul>
+              </div>
+              <h5>
+                <strong>
+                  <div id="title1" class="post-entry">
+                    网站维护
+                  </div>
+                </strong>
+              </h5>
+              <p>
+              <div id="c1" class="post-entry">
+                为了保证服务器的稳定和服务质量，网站将于2021年6月2日0点至2021年6月6日24点进行升级维护，请各位用户周知。对于维护期间给您带来的不便，敬请见谅，感谢所有用户的支持和配合！
+
+              </div>
+              </p>
+
+            </article>
+
+            <article>
+              <div class="meta-post">
+                <ul>
+                  <li><i class="icon-file"></i></li>
+                  <li>By <a id="l2" href="#" class="author">ring0</a></li>
+                  <li>On <a id='t2' href="#" class="date">2021-05-21 20:13:14</a></li>
+                </ul>
+              </div>
+              <h5>
+                <strong>
+                  <div id="title2" class="post-entry">
+                    迎新公告
+                  </div>
+                </strong>
+              </h5>
+              <p>
+              <div id="c2" class="post-entry">
+                寻师问道网站正式开启啦！欢迎大家加入！
+              </div>
+              </p>
+
+            </article>
+            <div id="pagination">
+              <a href="#" class="inactive" onclick="lastPage()">«</a>
+              <span class="current" id="p1">1</span>
+              <a href="#" class="inactive" onclick="nextPage()">»</a>
+              <span class="all" id="total">共0页</span>
+              <div class="input-append">
+                <input class="span2 input" id="jump" name="content" type="text" rows="1" autocomplete="off">
+                <button class="btn btn-theme" type="submit" onclick="jumpPage()">跳转</button>
+              </div>
+            </div>
+            <script>
+              var curPage = 0;
+              var MaxPage = 1;
+              var titles = [];
+              var contents = [];
+              var uploadtimes = [];
+              var uploaders = [];
+              $.ajax({
+                url: "/Announcements",
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                  titles = data.json_list["title"];
+                  contents = data.json_list["content"];
+                  uploadtimes = data.json_list["uploadtime"];
+                  uploaders = data.json_list["uploader"];
+                  MaxPage = Math.ceil(data.json_list["title"].length / 3);
+                  if (MaxPage < 1) MaxPage = 1;
+                  total = document.getElementById("total");
+                  total.innerText = `共${MaxPage}页`;
+                  if (data.json_list["title"].length !== 0) {
+                    var i;
+                    for (i = 0; i < data.json_list["title"].length && i < 3; i++) {
+                      title = document.getElementById(`title${i}`);
+                      title.innerText = data.json_list["title"][curPage + i];
+                      content = document.getElementById(`c${i}`);
+                      content.innerText = data.json_list["content"][curPage + i];
+                      uptime = document.getElementById(`t${i}`);
+                      uptime.innerText = data.json_list["uploadtime"][curPage + i];
+                      loader = document.getElementById(`l${i}`);
+                      loader.innerText = data.json_list["uploader"][curPage + i];
+                    }
+                    if (i == 1) {
+                      title = document.getElementById(`title${i}`);
+                      title.innerText = "网站维护";
+                      content = document.getElementById(`c${i}`);
+                      content.innerText = "为了保证服务器的稳定和服务质量，网站将于2021年6月2日0点至2021年6月6日24点进行升级维护，请各位用户周知。对于维护期间给您带来的不便，敬请见谅，感谢所有用户的支持和配合！";
+                      uptime = document.getElementById(`t${i}`);
+                      uptime.innerText = "2021-06-01 18:08:34";
+                      loader = document.getElementById(`l${i}`);
+                      loader.innerText = "ring0";
+                      i++;
+                    }
+                    if (i == 2) {
+                      title = document.getElementById(`title${i}`);
+                      title.innerText = "迎新公告";
+                      content = document.getElementById(`c${i}`);
+                      content.innerText = "寻师问道网站正式开启啦！欢迎大家加入！";
+                      uptime = document.getElementById(`t${i}`);
+                      uptime.innerText = "2021-05-21 20:13:14";
+                      loader = document.getElementById(`l${i}`);
+                      loader.innerText = "ring0";
+                    }
+                  }
+                }
+              });
+              function nextPage() {
+                if (curPage === MaxPage - 1) return;
+                curPage = curPage + 1;
+                document.getElementById("p1").innerText = `${curPage + 1}`;
+                var i = 0;
+                for (i = 0; curPage * 3 + i < titles.length && i < 3; i++) {
+                  title = document.getElementById(`title${i}`);
+                  title.innerText = titles[curPage * 3 + i];
+                  content = document.getElementById(`c${i}`);
+                  content.innerText = contents[curPage * 3 + i];
+                  uptime = document.getElementById(`t${i}`);
+                  uptime.innerText = uploadtimes[curPage * 3 + i];
+                  loader = document.getElementById(`l${i}`);
+                  loader.innerText = uploaders[curPage * 3 + i];
+                }
+                if (i == 1) {
+                  title = document.getElementById(`title${i}`);
+                  title.innerText = "网站维护";
+                  content = document.getElementById(`c${i}`);
+                  content.innerText = "为了保证服务器的稳定和服务质量，网站将于2021年6月2日0点至2021年6月6日24点进行升级维护，请各位用户周知。对于维护期间给您带来的不便，敬请见谅，感谢所有用户的支持和配合！";
+                  uptime = document.getElementById(`t${i}`);
+                  uptime.innerText = "2021-06-01 18:08:34";
+                  loader = document.getElementById(`l${i}`);
+                  loader.innerText = "ring0";
+                  i++;
+                }
+                if (i == 2) {
+                  title = document.getElementById(`title${i}`);
+                  title.innerText = "迎新公告";
+                  content = document.getElementById(`c${i}`);
+                  content.innerText = "寻师问道网站正式开启啦！欢迎大家加入！";
+                  uptime = document.getElementById(`t${i}`);
+                  uptime.innerText = "2021-05-21 20:13:14";
+                  loader = document.getElementById(`l${i}`);
+                  loader.innerText = "ring0";
+                }
+              }
+              function lastPage() {
+                if (curPage === 0) return;
+                curPage = curPage - 1;
+                document.getElementById("p1").innerText = `${curPage + 1}`;
+                var i = 0;
+                for (i = 0; curPage * 3 + i < titles.length && i < 3; i++) {
+                  title = document.getElementById(`title${i}`);
+                  title.innerText = titles[curPage + i];
+                  content = document.getElementById(`c${i}`);
+                  content.innerText = contents[curPage * 3 + i];
+                  uptime = document.getElementById(`t${i}`);
+                  uptime.innerText = uploadtimes[curPage * 3 + i];
+                  loader = document.getElementById(`l${i}`);
+                  loader.innerText = uploaders[curPage * 3 + i];
+                }
+                if (i == 1) {
+                  title = document.getElementById(`title${i}`);
+                  title.innerText = "网站维护";
+                  content = document.getElementById(`c${i}`);
+                  content.innerText = "为了保证服务器的稳定和服务质量，网站将于2021年6月2日0点至2021年6月6日24点进行升级维护，请各位用户周知。对于维护期间给您带来的不便，敬请见谅，感谢所有用户的支持和配合！";
+                  uptime = document.getElementById(`t${i}`);
+                  uptime.innerText = "2021-06-01 18:08:34";
+                  loader = document.getElementById(`l${i}`);
+                  loader.innerText = "ring0";
+                  i++;
+                }
+                if (i == 2) {
+                  title = document.getElementById(`title${i}`);
+                  title.innerText = "迎新公告";
+                  content = document.getElementById(`c${i}`);
+                  content.innerText = "寻师问道网站正式开启啦！欢迎大家加入！";
+                  uptime = document.getElementById(`t${i}`);
+                  uptime.innerText = "2021-05-21 20:13:14";
+                  loader = document.getElementById(`l${i}`);
+                  loader.innerText = "ring0";
+                }
+              }
+              function jumpPage() {
+                jump = document.getElementById("jump").value;
+                if (jump <= 0 || jump > MaxPage) alert("页面超出范围，请重新输入");
+                curPage = jump - 1;
+                document.getElementById("p1").innerText = `${curPage + 1}`;
+                var i = 0;
+                for (i = 0; curPage * 3 + i < titles.length && i < 3; i++) {
+                  title = document.getElementById(`title${i}`);
+                  title.innerText = titles[curPage + i];
+                  content = document.getElementById(`c${i}`);
+                  content.innerText = contents[curPage * 3 + i];
+                  uptime = document.getElementById(`t${i}`);
+                  uptime.innerText = uploadtimes[curPage * 3 + i];
+                  loader = document.getElementById(`l${i}`);
+                  loader.innerText = uploaders[curPage * 3 + i];
+                }
+                if (i == 1) {
+                  title = document.getElementById(`title${i}`);
+                  title.innerText = "网站维护";
+                  content = document.getElementById(`c${i}`);
+                  content.innerText = "为了保证服务器的稳定和服务质量，网站将于2021年6月2日0点至2021年6月6日24点进行升级维护，请各位用户周知。对于维护期间给您带来的不便，敬请见谅，感谢所有用户的支持和配合！";
+                  uptime = document.getElementById(`t${i}`);
+                  uptime.innerText = "2021-06-01 18:08:34";
+                  loader = document.getElementById(`l${i}`);
+                  loader.innerText = "ring0";
+                  i++;
+                }
+                if (i == 2) {
+                  title = document.getElementById(`title${i}`);
+                  title.innerText = "迎新公告";
+                  content = document.getElementById(`c${i}`);
+                  content.innerText = "寻师问道网站正式开启啦！欢迎大家加入！";
+                  uptime = document.getElementById(`t${i}`);
+                  uptime.innerText = "2021-05-21 20:13:14";
+                  loader = document.getElementById(`l${i}`);
+                  loader.innerText = "ring0";
+                }
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <footer>
+      <div class="container">
+        <h5 class="widgetheading">联系我们</h5>
+        <div class="row">
+          <div class="span4">
+            <address>
+              <strong>南开大学</strong><br>
+              天津市津南区海河教育园区同砚路38号
+            </address>
+          </div>
+          <div class="span4">
+            <div class="widget">
+              <p>
+                <br>
+                <i class="icon-github"></i> https://github.com/king-wk <br>
+              </p>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="widget">
+              <p>
+                <br>
+                <i class="icon-envelope-alt"></i> lookingforteachers@126.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sub-footer">
+        <div class="container">
+          <div class="row">
+            <div class="span6">
+              <div class="copyright">
+                <p><span>copyright&copy;. All right reserved</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bglight icon-2x active"></i></a>
+
+  <!-- javascript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="../static/js/jquery.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/bootstrap.js"></script>
+
+  <script src="../static/js/modernizr.custom.js"></script>
+  <script src="../static/js/toucheffects.js"></script>
+  <script src="../static/js/google-code-prettify/prettify.js"></script>
+  <script src="../static/js/jquery.bxslider.min.js"></script>
+
+  <script src="../static/js/jquery.prettyPhoto.js"></script>
+  <script src="../static/js/portfolio/jquery.quicksand.js"></script>
+  <script src="../static/js/portfolio/setting.js"></script>
+
+  <script src="../static/js/jquery.flexslider.js"></script>
+  <script src="../static/js/animate.js"></script>
+  <script src="../static/js/inview.js"></script>
+
+  <!-- Template Custom JavaScript File -->
+  <script src="../static/js/custom.js"></script>
+
+
+</body>
+
+</html>
